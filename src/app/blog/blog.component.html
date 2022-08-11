@@ -2,8 +2,8 @@
     <section class="flex justify-between">
         <p class="text-2xl"> {{blog.title}} </p>
         <section class="flex gap-3">
-            <p class="text-red-600">Edit</p>
-            <p class="text-red-600">Delete</p>
+            <p (click)="handleEdit(blog)" class="text-red-600">Edit</p>
+            <p (click)="handleDelete(blog.id)" class="text-red-600">Delete</p>
         </section>
     </section>
     <p>{{blog.content}}</p>

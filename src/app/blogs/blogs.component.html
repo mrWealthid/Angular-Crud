@@ -1,8 +1,23 @@
 <section class="w-full flex gap-2 h-screen bg-gray-100 ">
     <section class="w-full mt-6">
-        <app-blog [blogs]="blogs"></app-blog>
+        <app-blog (Delete)="handleDel($event)" (Edit)="handleEdit($event)" [blogs]="blogs"></app-blog>
     </section>
     <section class="w-full mt-6 ">
-        <app-form></app-form>
+        <form (ngSubmit)="submitValues(form.value)" [formGroup]="form"
+              class="bg-white flex flex-col gap-4 w-full p-8 rounded-lg mb-2 ">
+            <section class="flex flex-col gap-2">
+                <label for="title">Title</label>
+                <input class="p-2 border focus-within: outline-0 border-gray-100 rounded" formControlName="title"
+                       id="title">
+            </section>
+            <section class="flex flex-col gap-2">
+                <label for="content">Content</label>
+                <input class="p-2 border focus-within: outline-0 rounded border-gray-100" formControlName="content"
+                       id="content">
+            </section>
+            <div class="w-full">
+                <button class="bg-green-500 w-full text-white p-2 rounded">{{edit ? "Update" : "Save"}}</button>
+            </div>
+        </form>
     </section>
 </section>

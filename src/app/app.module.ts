@@ -4,7 +4,6 @@ import {AppComponent} from './app.component';
 import {BlogsComponent} from './blogs/blogs.component';
 import {BlogComponent} from './blog/blog.component';
 import {HttpClientModule} from "@angular/common/http";
-import {FormComponent} from './form/form.component';
 import {ReactiveFormsModule} from "@angular/forms";
 
 @NgModule({
@@ -12,7 +11,6 @@ import {ReactiveFormsModule} from "@angular/forms";
         AppComponent,
         BlogsComponent,
         BlogComponent,
-        FormComponent
     ],
     imports: [
         BrowserModule,
