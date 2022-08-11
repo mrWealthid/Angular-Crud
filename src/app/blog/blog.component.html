@@ -1,0 +1,13 @@
+<div class="bg-white p-4 w-1/2 h-32 rounded-lg m-2" *ngFor="let blog of blogs">
+    <section class="flex justify-between">
+        <p class="text-2xl"> {{blog.title}} </p>
+        <section class="flex gap-3">
+            <p class="text-red-600">Edit</p>
+            <p class="text-red-600">Delete</p>
+        </section>
+    </section>
+
+    <p>{{blog.content}}</p>
+
+    <p>{{blog.timeStamp}}</p>
+</div>
