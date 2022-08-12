@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {Observable, tap} from "rxjs";
+import {Observable} from "rxjs";
+import {tap} from 'rxjs/operators';
 import {IBlog} from "./blog";
 
 @Injectable({
@@ -8,9 +9,6 @@ import {IBlog} from "./blog";
 })
 export class BlogService {
     constructor(private http: HttpClient) {
-    }
-
-    handleSub() {
     }
 
     getBlogs(): Observable<IBlog[]> {

@@ -1,4 +1,4 @@
-<section class="w-full flex gap-2 h-screen bg-gray-100 ">
+<section class=" flex gap-2 mx-auto w-4/6 pt-32">
     <section class="w-full mt-6">
         <app-blog (Delete)="handleDel($event)" (Edit)="handleEdit($event)" [blogs]="blogs"></app-blog>
     </section>
@@ -7,13 +7,14 @@
               class="bg-white flex flex-col gap-4 w-full p-8 rounded-lg mb-2 ">
             <section class="flex flex-col gap-2">
                 <label for="title">Title</label>
-                <input class="p-2 border focus-within: outline-0 border-gray-100 rounded" formControlName="title"
+                <input class="p-2 border focus-within:outline-0 border-gray-300 rounded-lg" formControlName="title"
                        id="title">
             </section>
             <section class="flex flex-col gap-2">
                 <label for="content">Content</label>
-                <input class="p-2 border focus-within: outline-0 rounded border-gray-100" formControlName="content"
-                       id="content">
+                <textarea class="p-2 border focus-within:ring-0 focus-within:border-gray-100 rounded-lg border-gray-300"
+                          cols="30" formControlName="content"
+                          id="content" rows="10"></textarea>
             </section>
             <div class="w-full">
                 <button class="bg-green-500 w-full text-white p-2 rounded">{{edit ? "Update" : "Save"}}</button>

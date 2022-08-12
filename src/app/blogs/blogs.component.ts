@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {IBlog} from "../core/blog";
 import {BlogService} from "../core/blog.service";
 import {FormControl, FormGroup} from "@angular/forms";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
     selector: 'app-blogs',
@@ -16,11 +17,12 @@ export class BlogsComponent implements OnInit {
     edit: boolean;
     modified: IBlog;
 
-    constructor(private blogService: BlogService) {
+    constructor(private blogService: BlogService, private activatedRoute: ActivatedRoute) {
     }
 
     ngOnInit(): void {
-        this.blogService.getBlogs().subscribe(data => this.blogs = data);
+        this.blogs = this.activatedRoute.snapshot.data['resolvedBlogs'];
+        // this.blogService.getBlogs().subscribe(data => this.blogs = data);
         this.title = new FormControl<any>("");
         this.content = new FormControl<any>('');
         this.form = new FormGroup<any>({

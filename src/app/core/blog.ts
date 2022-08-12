@@ -4,3 +4,9 @@ export interface IBlog {
     id: number;
     timeStamp?: number | string;
 }
+
+export interface TrackerError {
+    errorNumber: number;
+    message: string;
+    friendlyMessage: string;
+}
