@@ -9,6 +9,8 @@ import {RouterModule} from "@angular/router";
 import {ErrorComponent} from './error/error.component';
 import {BlogResolver} from "./core/blog.resolver";
 import {AddHeader} from "./core/add-header";
+import {LogResponseInterceptor} from "./core/log-response.interceptor";
+import {CacheInterceptor} from "./core/cache.interceptor";
 
 @NgModule({
     declarations: [
@@ -29,6 +31,10 @@ import {AddHeader} from "./core/add-header";
     ],
     providers: [{
         provide: HTTP_INTERCEPTORS, useClass: AddHeader, multi: true
+    }, {
+        provide: HTTP_INTERCEPTORS, useClass: LogResponseInterceptor, multi: true
+    }, {
+        provide: HTTP_INTERCEPTORS, useClass: CacheInterceptor, multi: true
     }],
     bootstrap: [AppComponent]
 })

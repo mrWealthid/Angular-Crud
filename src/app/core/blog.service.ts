@@ -1,8 +1,9 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpContext} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {tap} from 'rxjs/operators';
 import {IBlog} from "./blog";
+import {CONTENT_TYPE} from "./add-header";
 
 @Injectable({
     providedIn: 'root'
@@ -12,7 +13,7 @@ export class BlogService {
     }
 
     getBlogs(): Observable<IBlog[]> {
-        return this.http.get<IBlog[]>(' http://localhost:3000/posts').pipe(
+        return this.http.get<IBlog[]>(' http://localhost:3000/posts ', {context: new HttpContext().set(CONTENT_TYPE, 'application/xml')}).pipe(
             tap((data) => console.log(data))
         );
     }
