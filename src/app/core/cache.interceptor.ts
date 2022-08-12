@@ -1,8 +1,17 @@
 import {Injectable} from '@angular/core';
-import {HttpEvent, HttpHandler, HttpInterceptor, HttpRequest, HttpResponse} from '@angular/common/http';
+import {
+    HttpContextToken,
+    HttpEvent,
+    HttpHandler,
+    HttpInterceptor,
+    HttpRequest,
+    HttpResponse
+} from '@angular/common/http';
 import {Observable, of} from 'rxjs';
 import {HttpCacheService} from "./http-cache.service";
 import {tap} from "rxjs/operators";
+//This means by default I want to cache all request
+export const CACHEABLE_REQUEST = new HttpContextToken(() => true);
 
 @Injectable()
 export class CacheInterceptor implements HttpInterceptor {
@@ -10,6 +19,10 @@ export class CacheInterceptor implements HttpInterceptor {
     }
 
     intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
+        //Cache Only Requests configured to be cacheable
+        if (!request.context.get(CACHEABLE_REQUEST)) {
+            return next.handle(request);
+        }
         //pass along non-cacheable requests and invalidate cache
         if (request.method !== "GET") {
             console.log(`Invalidation Cache: ${request.method} ${request.url}`);
