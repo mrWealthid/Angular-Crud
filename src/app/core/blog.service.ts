@@ -13,9 +13,9 @@ export class BlogService {
     constructor(private http: HttpClient) {
     }
 
-    //Setting Cacheable request to false; Would make the request to be made always
+    //Setting Cacheable request to false using this set method .set(CACHEABLE_REQUEST, false); Would cause the request to be made always
     getBlogs(): Observable<IBlog[]> {
-        return this.http.get<IBlog[]>(' http://localhost:3000/posts ', {context: new HttpContext().set(CACHEABLE_REQUEST, false).set(CONTENT_TYPE, 'application/xml')})
+        return this.http.get<IBlog[]>(' http://localhost:3000/posts ', {context: new HttpContext().set(CONTENT_TYPE, 'application/xml')})
             .pipe(
                 tap((data) => console.log(data))
             );
@@ -31,5 +31,9 @@ export class BlogService {
 
     deletePost(id: number): Observable<IBlog> {
         return this.http.delete<IBlog>(` http://localhost:3000/posts/${id}`,);
+    }
+
+    getBlogById(id: number): Observable<IBlog> {
+        return this.http.get<IBlog>(`http://localhost:3000/posts/${id}`, {context: new HttpContext().set(CACHEABLE_REQUEST, false)});
     }
 }

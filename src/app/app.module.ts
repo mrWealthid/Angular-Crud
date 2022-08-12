@@ -11,6 +11,7 @@ import {BlogResolver} from "./core/blog.resolver";
 import {AddHeader} from "./core/add-header";
 import {LogResponseInterceptor} from "./core/log-response.interceptor";
 import {CacheInterceptor} from "./core/cache.interceptor";
+import {SingleblogComponent} from './singleblog/singleblog.component';
 
 @NgModule({
     declarations: [
@@ -18,6 +19,7 @@ import {CacheInterceptor} from "./core/cache.interceptor";
         BlogsComponent,
         BlogComponent,
         ErrorComponent,
+        SingleblogComponent,
     ],
     imports: [
         BrowserModule,
@@ -26,8 +28,12 @@ import {CacheInterceptor} from "./core/cache.interceptor";
         RouterModule.forRoot([{
             path: "", component: BlogsComponent, resolve: {resolvedBlogs: BlogResolver}
         }, {
+            path: ":id", component: SingleblogComponent
+        }, {
             path: "error", component: ErrorComponent
-        }])
+        }
+            //     {path: '', redirectTo: '/blog', pathMatch: 'full'},
+        ])
     ],
     providers: [{
         provide: HTTP_INTERCEPTORS, useClass: AddHeader, multi: true

@@ -51,11 +51,13 @@ export class BlogsComponent implements OnInit {
             let findIndex = this.blogs.findIndex((blog) => blog.id === this.modified.id);
             this.blogService.updatePost(this.modified.id, val).subscribe(data => {
                 this.blogs[findIndex] = data;
+                this.form.reset()
+                this.edit = false;
             });
-            this.edit = false;
         } else {
             this.blogService.addPost(val).subscribe(data => {
                 this.blogs.push(data);
+                this.form.reset()
             });
         }
     }
