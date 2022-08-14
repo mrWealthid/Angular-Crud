@@ -11,6 +11,8 @@ export class AddHeader implements HttpInterceptor {
 
     intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
         console.log(`AddHeaderInterceptor- ${request.url}`);
+        console.log(request);
+        console.log('Progress Report' + " " + request.reportProgress);
         let jsonRequest: HttpRequest<any> = request.clone({
             setHeaders: {'Content-Type': request.context.get(CONTENT_TYPE)}
         });

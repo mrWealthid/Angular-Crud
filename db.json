@@ -1,7 +1,7 @@
 {
   "posts": [
     {
-      "title": "Freshesh",
+      "title": "Fresheshs",
       "content": "ssajsja\n\n",
       "id": 5
     },
@@ -16,7 +16,18 @@
       "id": 7
     }
   ],
-  "comments": [],
+  "comments": [
+    {
+      "name": "Fresh",
+      "comment": "dgdgdgdgbsbsajajajjajaj",
+      "id": 1
+    },
+    {
+      "id": 48,
+      "name": "Fresh",
+      "comment": "dgdgdgdgbsbsajajajjajaj"
+    }
+  ],
   "profile": {
     "name": "typicode"
   }

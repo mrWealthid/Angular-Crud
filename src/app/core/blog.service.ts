@@ -36,4 +36,8 @@ export class BlogService {
     getBlogById(id: number): Observable<IBlog> {
         return this.http.get<IBlog>(`http://localhost:3000/posts/${id}`, {context: new HttpContext().set(CACHEABLE_REQUEST, false)});
     }
+
+    addComment(newComment: any): Observable<any> {
+        return this.http.post<any>(' http://localhost:3000/comments', newComment);
+    }
 }
