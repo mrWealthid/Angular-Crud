@@ -28,11 +28,11 @@ import {SingleblogComponent} from './singleblog/singleblog.component';
         RouterModule.forRoot([{
             path: "", component: BlogsComponent, resolve: {resolvedBlogs: BlogResolver}
         }, {
-            path: "error", component: ErrorComponent
-        }, {
             path: ":id", component: SingleblogComponent
-        },
-            // {path: '', redirectTo: '/blog', pathMatch: 'full'},
+        }, {
+            path: "error", component: ErrorComponent
+        }
+            //     {path: '', redirectTo: '/blog', pathMatch: 'full'},
         ])
     ],
     providers: [{
