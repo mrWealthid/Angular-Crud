@@ -26,13 +26,13 @@ import {SingleblogComponent} from './singleblog/singleblog.component';
         HttpClientModule,
         ReactiveFormsModule,
         RouterModule.forRoot([{
-            path: "", component: BlogsComponent, resolve: {resolvedBlogs: BlogResolver}
-        }, {
-            path: ":id", component: SingleblogComponent
+            path: "blog", component: BlogsComponent, resolve: {resolvedBlogs: BlogResolver}
         }, {
             path: "error", component: ErrorComponent
-        }
-            //     {path: '', redirectTo: '/blog', pathMatch: 'full'},
+        }, {
+            path: ":id", component: SingleblogComponent
+        },
+            {path: '', redirectTo: '/blog', pathMatch: 'full'},
         ])
     ],
     providers: [{

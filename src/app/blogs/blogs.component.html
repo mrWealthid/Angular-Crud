@@ -17,7 +17,8 @@
                           id="content" rows="10"></textarea>
             </section>
             <div class="w-full">
-                <button class="bg-green-500 w-full text-white p-2 rounded">{{edit ? "Update" : "Save"}}</button>
+                <button [disabled]="form.invalid"
+                        class="btn-primary w-full text-white p-2 rounded">{{edit ? "Update" : "Save"}}</button>
             </div>
         </form>
     </section>
