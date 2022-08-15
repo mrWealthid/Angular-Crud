@@ -1,0 +1,15 @@
+<ng-container *ngFor="let item of response|keyvalue">
+    <ng-container *ngIf="item.value.length > 2; else test">
+        <p class="text-3xl">{{testString.test(item.key) ? "besters" : item.key}}</p>
+        <p *ngFor="let data of item.value" class="flex  gap-20">
+            {{data.name}}
+            {{data.id }}
+        </p>
+    </ng-container>
+</ng-container>
+<ng-template #test>
+    No data Found
+</ng-template>
+<br>
+<br>
+<br>

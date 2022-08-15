@@ -12,6 +12,7 @@ import {AddHeader} from "./core/add-header";
 import {LogResponseInterceptor} from "./core/log-response.interceptor";
 import {CacheInterceptor} from "./core/cache.interceptor";
 import {SingleblogComponent} from './singleblog/singleblog.component';
+import {ObjectLoopComponent} from './object-loop/object-loop.component';
 
 @NgModule({
     declarations: [
@@ -20,6 +21,7 @@ import {SingleblogComponent} from './singleblog/singleblog.component';
         BlogComponent,
         ErrorComponent,
         SingleblogComponent,
+        ObjectLoopComponent,
     ],
     imports: [
         BrowserModule,
@@ -30,6 +32,9 @@ import {SingleblogComponent} from './singleblog/singleblog.component';
         },
             {
                 path: "error", component: ErrorComponent
+            },
+            {
+                path: "loops", component: ObjectLoopComponent
             },
             {
                 path: ":id", component: SingleblogComponent
