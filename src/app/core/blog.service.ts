@@ -3,7 +3,7 @@ import {HttpClient, HttpContext} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {tap} from 'rxjs/operators';
 import {IBlog} from "./blog";
-import {CONTENT_TYPE} from "./add-header";
+import {BEARER_TOKEN, CONTENT_TYPE} from "./add-header";
 import {CACHEABLE_REQUEST} from "./cache.interceptor";
 
 @Injectable({
@@ -15,7 +15,7 @@ export class BlogService {
 
     //Setting Cacheable request to false using this set method .set(CACHEABLE_REQUEST, false); Would cause the request to be made always
     getBlogs(): Observable<IBlog[]> {
-        return this.http.get<IBlog[]>(' http://localhost:3000/posts ', {context: new HttpContext().set(CONTENT_TYPE, 'application/xml')})
+        return this.http.get<IBlog[]>(' http://localhost:3000/posts ', {context: new HttpContext().set(CONTENT_TYPE, 'application/xml').set(BEARER_TOKEN, false)})
             .pipe(
                 tap((data) => console.log(data))
             );
@@ -30,7 +30,7 @@ export class BlogService {
     }
 
     deletePost(id: number): Observable<IBlog> {
-        return this.http.delete<IBlog>(` http://localhost:3000/posts/${id}`,);
+        return this.http.delete<IBlog>(` http://localhost:3000/posts/${id}`, {context: new HttpContext().set(BEARER_TOKEN, false)});
     }
 
     getBlogById(id: number): Observable<IBlog> {
@@ -40,4 +40,6 @@ export class BlogService {
     addComment(newComment: any): Observable<any> {
         return this.http.post<any>(' http://localhost:3000/comments', newComment);
     }
+
+    //Mastering Rxjs
 }

@@ -16,6 +16,7 @@ export class BlogsComponent implements OnInit {
     content: FormControl;
     edit: boolean;
     modified: IBlog;
+    isLoading: boolean;
 
     constructor(private blogService: BlogService, private activatedRoute: ActivatedRoute) {
     }
@@ -32,7 +33,9 @@ export class BlogsComponent implements OnInit {
     }
 
     handleDel(val: number) {
+        this.isLoading = true;
         this.blogService.deletePost(val).subscribe(_ => {
+            this.isLoading = false;
             this.blogs = this.blogs.filter((item) => item.id !== val);
         });
     }
@@ -47,16 +50,19 @@ export class BlogsComponent implements OnInit {
     }
 
     submitValues(val: IBlog) {
+        this.isLoading = true;
         if (this.edit) {
             let findIndex = this.blogs.findIndex((blog) => blog.id === this.modified.id);
             this.blogService.updatePost(this.modified.id, val).subscribe(data => {
                 this.blogs[findIndex] = data;
+                this.isLoading = false;
                 this.form.reset();
                 this.edit = false;
             });
         } else {
             this.blogService.addPost(val).subscribe(data => {
                 this.blogs.push(data);
+                this.isLoading = false;
                 this.form.reset();
             });
         }
@@ -69,5 +75,9 @@ export class BlogsComponent implements OnInit {
             name: "Fresh",
             comment: "dgdgdgdgbsbsajajajjajaj"
         }).subscribe(data => console.log(data));
+    }
+
+    handleTest(data: any) {
+        console.log(data);
     }
 }

@@ -1,5 +1,5 @@
 <ng-container *ngFor="let item of response|keyvalue">
-    <ng-container *ngIf="item.value.length > 2; else test">
+    <ng-container *ngIf="item.value.length > 0; else test">
         <p class="text-3xl">{{testString.test(item.key) ? "besters" : item.key}}</p>
         <p *ngFor="let data of item.value" class="flex  gap-20">
             {{data.name}}

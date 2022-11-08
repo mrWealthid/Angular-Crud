@@ -13,6 +13,10 @@ import {LogResponseInterceptor} from "./core/log-response.interceptor";
 import {CacheInterceptor} from "./core/cache.interceptor";
 import {SingleblogComponent} from './singleblog/singleblog.component';
 import {ObjectLoopComponent} from './object-loop/object-loop.component';
+import {TestViewChildComponent} from './test-view-child/test-view-child.component';
+import {TestViewsComponent} from './test-views/test-views.component';
+import {AdminComponent} from './admin/admin.component';
+import {NgxLoadingModule} from "ngx-loading";
 
 @NgModule({
     declarations: [
@@ -22,19 +26,40 @@ import {ObjectLoopComponent} from './object-loop/object-loop.component';
         ErrorComponent,
         SingleblogComponent,
         ObjectLoopComponent,
+        TestViewChildComponent,
+        TestViewsComponent,
+        AdminComponent,
     ],
     imports: [
         BrowserModule,
         HttpClientModule,
         ReactiveFormsModule,
+        NgxLoadingModule.forRoot({
+            // animationType: ngxLoadingAnimationTypes.rotatingPlane,
+            backdropBackgroundColour: "rgba(0,0,0,0.1)",
+            backdropBorderRadius: "4px",
+            primaryColour: " #f16521",
+            secondaryColour: " #f16521",
+            tertiaryColour: "#1ca78b",
+            fullScreenBackdrop: true
+        }),
         RouterModule.forRoot([{
             path: "", component: BlogsComponent, resolve: {resolvedBlogs: BlogResolver}
         },
+            {
+                path: "admin", component: AdminComponent
+            },
             {
                 path: "error", component: ErrorComponent
             },
             {
                 path: "loops", component: ObjectLoopComponent
+            },
+            {
+                path: "viewChild", component: TestViewChildComponent
+            },
+            {
+                path: "views", component: TestViewsComponent
             },
             {
                 path: ":id", component: SingleblogComponent

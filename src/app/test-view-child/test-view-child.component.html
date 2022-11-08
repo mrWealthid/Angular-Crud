@@ -1,0 +1,12 @@
+<form [formGroup]="executeForm" action="">
+    <section>
+        <button (click)="addFields()">Add New</button>
+    </section>
+    <section class="w-1/2" formArrayName="dynamicVals">
+        <section *ngFor="let mob of dynamicVals.controls; let i=index" class="flex flex-col gap-2">
+            <label>Title {{i}}</label>
+            <input [formControlName]="i" class="p-2 border focus-within:outline-0 border-gray-300 rounded-lg"
+                   type="text">
+        </section>
+    </section>
+</form>

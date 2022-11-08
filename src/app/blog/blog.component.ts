@@ -13,6 +13,8 @@ export class BlogComponent implements OnInit {
     Edit = new EventEmitter();
     @Output()
     Delete = new EventEmitter();
+    @Output()
+    Testers = new EventEmitter<any>();
 
     constructor() {
     }
@@ -26,5 +28,12 @@ export class BlogComponent implements OnInit {
 
     handleDelete(id: number) {
         this.Delete.emit(id);
+    }
+
+    handleTest() {
+        this.Testers.emit({
+            name: "test",
+            id: 2223
+        });
     }
 }

@@ -1,6 +1,7 @@
 <section class=" flex gap-2 mx-auto w-4/6 pt-32">
     <section class="w-full mt-6">
-        <app-blog (Delete)="handleDel($event)" (Edit)="handleEdit($event)" [blogs]="blogs"></app-blog>
+        <app-blog (Delete)="handleDel($event)" (Edit)="handleEdit($event)" (Testers)="handleTest($event)"
+                  [blogs]="blogs"></app-blog>
     </section>
     <section class="w-full mt-6 ">
         <form (ngSubmit)="submitValues(form.value)" [formGroup]="form"
@@ -23,4 +24,8 @@
         </form>
     </section>
 </section>
+<ngx-loading
+        [config]="{ backdropBorderRadius: '10px' }"
+        [show]="isLoading"
+></ngx-loading>
 <!--<button (click)="addComment()">Add Comment</button>-->
