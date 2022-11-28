@@ -17,6 +17,11 @@ import {TestViewChildComponent} from './test-view-child/test-view-child.componen
 import {TestViewsComponent} from './test-views/test-views.component';
 import {AdminComponent} from './admin/admin.component';
 import {NgxLoadingModule} from "ngx-loading";
+import {StoreModule} from "@ngrx/store";
+import {StoreDevtoolsModule} from "@ngrx/store-devtools";
+import {reducers} from "./core/store/reducers";
+import {EffectsModule} from "@ngrx/effects";
+import {BlogsEffect} from "./core/store/effects";
 
 @NgModule({
     declarations: [
@@ -32,6 +37,19 @@ import {NgxLoadingModule} from "ngx-loading";
     ],
     imports: [
         BrowserModule,
+        StoreModule.forRoot({blogs: reducers})
+        ,
+        EffectsModule.forRoot([BlogsEffect]),
+        StoreDevtoolsModule.instrument({
+            maxAge: 25,
+            logOnly: false,
+            autoPause: true,
+            // features: {
+            //     pause: false,
+            //     lock: true,
+            //     persist: true
+            // }
+        }),
         HttpClientModule,
         ReactiveFormsModule,
         NgxLoadingModule.forRoot({
