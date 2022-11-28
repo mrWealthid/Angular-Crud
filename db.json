@@ -1,29 +1,14 @@
 {
   "posts": [
     {
-      "title": "Camp",
-      "content": "dgdg gww",
-      "id": 7
+      "title": "First",
+      "content": "Waiy",
+      "id": 1
     },
     {
-      "title": "Tests",
-      "content": "ehehehe",
-      "id": 8
-    },
-    {
-      "title": "Remita Camp",
-      "content": "fhhfhfdj dhdh",
-      "id": 9
-    },
-    {
-      "title": "Test Ngrx",
-      "content": "Get content loaded with Ngrx",
-      "id": 10
-    },
-    {
-      "title": "Ngrx test2",
-      "content": "I configured Ngrx again",
-      "id": 11
+      "title": "gggGGV",
+      "content": "HJMjBB",
+      "id": 4
     }
   ],
   "comments": [

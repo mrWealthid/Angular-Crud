@@ -45,11 +45,12 @@ export class BlogsComponent implements OnInit {
     }
 
     handleDel(val: number) {
-        this.isLoading = true;
-        this.blogService.deletePost(val).subscribe(_ => {
-            this.isLoading = false;
-            this.blogs = this.blogs.filter((item) => item.id !== val);
-        });
+        this.store.dispatch(BlogsAction.deleteBlogs({id: val}));
+        // this.isLoading = true;
+        // this.blogService.deletePost(val).subscribe(_ => {
+        //     this.isLoading = false;
+        //     this.blogs = this.blogs.filter((item) => item.id !== val);
+        // });
     }
 
     handleEdit(val: IBlog) {
@@ -62,21 +63,26 @@ export class BlogsComponent implements OnInit {
     }
 
     submitValues(val: IBlog) {
+        const value = {...this.modified, title: val.title, content: val.content};
         this.isLoading = true;
         if (this.edit) {
-            let findIndex = this.blogs.findIndex((blog) => blog.id === this.modified.id);
-            this.blogService.updatePost(this.modified.id, val).subscribe(data => {
-                this.blogs[findIndex] = data;
-                this.isLoading = false;
-                this.form.reset();
-                this.edit = false;
-            });
+            // let findIndex = this.blogs.findIndex((blog) => blog.id === this.modified.id);
+            this.store.dispatch(BlogsAction.updateBlogs({newBlog: value}));
+            this.form.reset();
+            this.edit = false;
+            // this.blogService.updatePost(this.modified.id, val).subscribe(data => {
+            //     this.blogs[findIndex] = data;
+            //     this.isLoading = false;
+            //     this.form.reset();
+            //     this.edit = false;
+            // });
         } else {
             this.store.dispatch(BlogsAction.addBlogs({newBlog: val}));
+            this.form.reset();
             // this.blogService.addPost(val).subscribe(data => {
             //     this.blogs.push(data);
             //     this.isLoading = false;
-            //     this.form.reset();
+            //
             // });
         }
     }

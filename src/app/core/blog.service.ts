@@ -28,12 +28,12 @@ export class BlogService {
         return this.http.post<IBlog>(' http://localhost:3000/posts', newPost);
     }
 
-    updatePost(id: number, newPost: IBlog): Observable<IBlog> {
-        return this.http.put<IBlog>(` http://localhost:3000/posts/${id}`, newPost);
+    updatePost(newPost: IBlog): Observable<IBlog> {
+        return this.http.put<IBlog>(` http://localhost:3000/posts/${newPost.id}`, newPost);
     }
 
-    deletePost(id: number): Observable<IBlog> {
-        return this.http.delete<IBlog>(` http://localhost:3000/posts/${id}`, {context: new HttpContext().set(BEARER_TOKEN, false)});
+    deletePost(id: number): Observable<any> {
+        return this.http.delete<any>(` http://localhost:3000/posts/${id}`, {context: new HttpContext().set(BEARER_TOKEN, false)});
     }
 
     getBlogById(id: number): Observable<IBlog> {
