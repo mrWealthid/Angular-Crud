@@ -15,7 +15,10 @@ export class BlogService {
 
     //Setting Cacheable request to false using this set method .set(CACHEABLE_REQUEST, false); Would cause the request to be made always
     getBlogs(): Observable<IBlog[]> {
-        return this.http.get<IBlog[]>(' http://localhost:3000/posts ', {context: new HttpContext().set(CONTENT_TYPE, 'application/xml').set(BEARER_TOKEN, false)})
+        return this.http.get<IBlog[]>(' http://localhost:3000/posts ', {
+            context: new HttpContext().set(CONTENT_TYPE, 'application/xml').set(BEARER_TOKEN, false),
+            observe: "body"
+        })
             .pipe(
                 tap((data) => console.log(data))
             );

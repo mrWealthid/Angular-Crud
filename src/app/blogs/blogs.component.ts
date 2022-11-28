@@ -3,6 +3,11 @@ import {IBlog} from "../core/blog";
 import {BlogService} from "../core/blog.service";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {ActivatedRoute} from "@angular/router";
+import {select, Store} from "@ngrx/store";
+import * as BlogsAction from "../core/store/actions";
+import {Observable} from "rxjs";
+import {isLoadingSelector} from "../core/store/selectors";
+import {AppStateInterface} from "../types/appState-interface";
 
 @Component({
     selector: 'app-blogs',
@@ -17,11 +22,14 @@ export class BlogsComponent implements OnInit {
     edit: boolean;
     modified: IBlog;
     isLoading: boolean;
+    isLoadings$: Observable<boolean>;
 
-    constructor(private blogService: BlogService, private activatedRoute: ActivatedRoute) {
+    constructor(private blogService: BlogService, private activatedRoute: ActivatedRoute, private store: Store<AppStateInterface>) {
+        this.isLoadings$ = this.store.pipe(select(isLoadingSelector));
     }
 
     ngOnInit(): void {
+        this.store.dispatch(BlogsAction.getBlogs());
         this.blogs = this.activatedRoute.snapshot.data['resolvedBlogs'];
         // this.blogService.getBlogs().subscribe(data => this.blogs = data);
         this.title = new FormControl<any>("", Validators.required);

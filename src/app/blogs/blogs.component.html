@@ -3,6 +3,7 @@
         <app-blog (Delete)="handleDel($event)" (Edit)="handleEdit($event)" (Testers)="handleTest($event)"
                   [blogs]="blogs"></app-blog>
     </section>
+    <div *ngIf="isLoadings$| async"> Loading</div>
     <section class="w-full mt-6 ">
         <form (ngSubmit)="submitValues(form.value)" [formGroup]="form"
               class="bg-white flex flex-col gap-4 w-full p-8 rounded-lg mb-2 ">
