@@ -14,6 +14,18 @@ export class BlogsEffect {
             }))));
         }))
     );
+    addBlogs$ = createEffect(() =>
+        this.actions$.pipe(ofType(BlogActions.addBlogs),
+            mergeMap((value) => {
+                return this.blogService.addPost({
+                    id: value.newBlog.id,
+                    title: value.newBlog.title,
+                    content: value.newBlog.content
+                }).pipe(map(newBlog => BlogActions.addBlogsSuccess({newBlog})), catchError(error => of(BlogActions.getBlogsFailure({
+                    error: error.message
+                }))));
+            }))
+    );
 
     constructor(private actions$: Actions, private blogService: BlogService) {
     }

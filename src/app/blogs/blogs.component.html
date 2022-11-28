@@ -1,9 +1,10 @@
 <section class=" flex gap-2 mx-auto w-4/6 pt-32">
     <section class="w-full mt-6">
         <app-blog (Delete)="handleDel($event)" (Edit)="handleEdit($event)" (Testers)="handleTest($event)"
-                  [blogs]="blogs"></app-blog>
+                  [blogs]="(blogs$|async)"></app-blog>
     </section>
     <div *ngIf="isLoadings$| async"> Loading</div>
+    <div *ngIf="error$| async as error"> {{error}}</div>
     <section class="w-full mt-6 ">
         <form (ngSubmit)="submitValues(form.value)" [formGroup]="form"
               class="bg-white flex flex-col gap-4 w-full p-8 rounded-lg mb-2 ">
@@ -27,6 +28,6 @@
 </section>
 <ngx-loading
         [config]="{ backdropBorderRadius: '10px' }"
-        [show]="isLoading"
+        [show]="false"
 ></ngx-loading>
 <!--<button (click)="addComment()">Add Comment</button>-->

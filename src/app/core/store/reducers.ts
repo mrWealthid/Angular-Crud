@@ -8,9 +8,15 @@ export const initialState: BlogsState = {
     error: null
 };
 export const reducers = createReducer(initialState, on(BlogActions.getBlogs, (state) => ({
-    ...state, isLoading: true
-})), on(BlogActions.getBlogsSuccess, (state, action) => ({
-    ...state, isLoading: false, blogs: action.blogs
-})), on(BlogActions.getBlogsFailure, (state, action) => ({
-    ...state, isLoading: false, error: action.error
-})));
+        ...state, isLoading: true
+    })), on(BlogActions.getBlogsSuccess, (state, action) => ({
+        ...state, isLoading: false, blogs: action.blogs
+    })), on(BlogActions.getBlogsFailure, (state, action) => ({
+        ...state, isLoading: false, error: action.error
+    })), on(BlogActions.addBlogs, (state, action) => ({
+        ...state, isLoading: false,
+    })),
+    on(BlogActions.addBlogsSuccess, (state, action) => ({
+        ...state, isLoading: false, blogs: [...state.blogs, action.newBlog]
+    }))
+);

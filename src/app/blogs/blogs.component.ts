@@ -6,7 +6,7 @@ import {ActivatedRoute} from "@angular/router";
 import {select, Store} from "@ngrx/store";
 import * as BlogsAction from "../core/store/actions";
 import {Observable} from "rxjs";
-import {isLoadingSelector} from "../core/store/selectors";
+import {blogsSelector, errorSelector, isLoadingSelector} from "../core/store/selectors";
 import {AppStateInterface} from "../types/appState-interface";
 
 @Component({
@@ -23,9 +23,13 @@ export class BlogsComponent implements OnInit {
     modified: IBlog;
     isLoading: boolean;
     isLoadings$: Observable<boolean>;
+    blogs$: Observable<IBlog[]>;
+    error$: Observable<string | null>;
 
     constructor(private blogService: BlogService, private activatedRoute: ActivatedRoute, private store: Store<AppStateInterface>) {
         this.isLoadings$ = this.store.pipe(select(isLoadingSelector));
+        this.blogs$ = this.store.pipe(select(blogsSelector));
+        this.error$ = this.store.pipe(select(errorSelector));
     }
 
     ngOnInit(): void {
@@ -68,11 +72,12 @@ export class BlogsComponent implements OnInit {
                 this.edit = false;
             });
         } else {
-            this.blogService.addPost(val).subscribe(data => {
-                this.blogs.push(data);
-                this.isLoading = false;
-                this.form.reset();
-            });
+            this.store.dispatch(BlogsAction.addBlogs({newBlog: val}));
+            // this.blogService.addPost(val).subscribe(data => {
+            //     this.blogs.push(data);
+            //     this.isLoading = false;
+            //     this.form.reset();
+            // });
         }
     }
 

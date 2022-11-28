@@ -8,7 +8,7 @@ import {IBlog} from "../core/blog";
 })
 export class BlogComponent implements OnInit {
     @Input()
-    blogs: IBlog[];
+    blogs: IBlog[] | null;
     @Output()
     Edit = new EventEmitter();
     @Output()

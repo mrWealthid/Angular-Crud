@@ -16,9 +16,14 @@
       "id": 9
     },
     {
-      "title": "Fresh",
-      "content": "hehehehe\n",
+      "title": "Test Ngrx",
+      "content": "Get content loaded with Ngrx",
       "id": 10
+    },
+    {
+      "title": "Ngrx test2",
+      "content": "I configured Ngrx again",
+      "id": 11
     }
   ],
   "comments": [
@@ -26,11 +31,6 @@
       "name": "Fresh",
       "comment": "dgdgdgdgbsbsajajajjajaj",
       "id": 1
-    },
-    {
-      "id": 48,
-      "name": "Fresh",
-      "comment": "dgdgdgdgbsbsajajajjajaj"
     }
   ],
   "profile": {
