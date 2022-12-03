@@ -1,0 +1,38 @@
+<!--<div class="w-1/3">-->
+<!--    <section class="bg-white">-->
+<!--        <form [formGroup]="testForm" action="" class="p-5">-->
+<!--            <section class="flex flex-col gap-2">-->
+<!--                &lt;!&ndash;                <label for="title">Title</label>&ndash;&gt;-->
+<!--                &lt;!&ndash;                <input class="p-2 border focus-within:outline-0 border-gray-300 rounded-lg" formControlName="title"&ndash;&gt;-->
+<!--                &lt;!&ndash;                       id="title">&ndash;&gt;-->
+<!--                <select (change)="handleChange($event)" formControlName="select">-->
+<!--                    <option value="">select function</option>-->
+<!--                    <option value="first">first</option>-->
+<!--                    <option value="second">second</option>-->
+<!--                </select>-->
+<!--                <div *ngIf="select.value" class="dynamicField">-->
+<!--                    <p>Fresh</p>-->
+<!--                    <section *ngFor="let item of data">-->
+<!--                        <ng-container [ngSwitch]="item.paramType">-->
+<!--                            <section *ngSwitchCase="'text'">-->
+<!--                                This is a text field-->
+<!--                            </section>-->
+<!--                            5-->
+<!--                            <section *ngSwitchCase="'number'">-->
+<!--                                This is a number-->
+<!--                            </section>-->
+<!--                            <section *ngSwitchCase="'LOV'">-->
+<!--                                <label>{{item.id}}</label>-->
+<!--                                <select class="w-full" id="" name="">-->
+<!--                                    <option *ngFor=" let item of data" value="">Select Param Type</option>-->
+<!--                                    {{getParamVals(item.id)}}-->
+<!--                                </select>-->
+<!--                            </section>-->
+<!--                            <section *ngSwitchDefault>...</section>-->
+<!--                        </ng-container>-->
+<!--                    </section>-->
+<!--                </div>-->
+<!--            </section>-->
+<!--        </form>-->
+<!--    </section>-->
+<!--</div>-->

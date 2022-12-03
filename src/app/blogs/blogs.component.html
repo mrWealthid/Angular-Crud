@@ -8,6 +8,7 @@
     <section class="w-full mt-6 ">
         <form (ngSubmit)="submitValues(form.value)" [formGroup]="form"
               class="bg-white flex flex-col gap-4 w-full p-8 rounded-lg mb-2 ">
+            {{form.value| json }}
             <section class="flex flex-col gap-2">
                 <label for="title">Title</label>
                 <input class="p-2 border focus-within:outline-0 border-gray-300 rounded-lg" formControlName="title"
