@@ -19,9 +19,11 @@ import {AdminComponent} from './admin/admin.component';
 import {NgxLoadingModule} from "ngx-loading";
 import {StoreModule} from "@ngrx/store";
 import {StoreDevtoolsModule} from "@ngrx/store-devtools";
-import {reducers} from "./core/store/reducers";
+import {reducers} from "./core/store/Blogs/reducers";
 import {EffectsModule} from "@ngrx/effects";
-import {BlogsEffect} from "./core/store/effects";
+import {BlogsEffect} from "./core/store/Blogs/effects";
+import {networkReducers} from "./core/store/Network/reducers";
+import {NetworkEffect} from "./core/store/Network/effects";
 
 @NgModule({
     declarations: [
@@ -37,9 +39,9 @@ import {BlogsEffect} from "./core/store/effects";
     ],
     imports: [
         BrowserModule,
-        StoreModule.forRoot({blogs: reducers})
+        StoreModule.forRoot({blogs: reducers, network: networkReducers})
         ,
-        EffectsModule.forRoot([BlogsEffect]),
+        EffectsModule.forRoot([BlogsEffect, NetworkEffect]),
         StoreDevtoolsModule.instrument({
             maxAge: 25,
             logOnly: false,
