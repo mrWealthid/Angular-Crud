@@ -1,13 +1,22 @@
-import {BlogsState} from "../../blogs/types/blogsState-interface";
+import {BlogsState} from "../../../blogs/types/blogsState-interface";
 import {createReducer, on} from "@ngrx/store";
 import * as BlogActions from './actions';
 
 export const initialState: BlogsState = {
     isLoading: false,
     blogs: [],
-    error: null
+    error: null,
+    // online: false,
+    // offline: false
 };
-export const reducers = createReducer(initialState, on(BlogActions.getBlogs, (state) => ({
+export const reducers = createReducer(initialState,
+    // on(BlogActions.online, (state, action) => ({
+    //     ...state, online: true, offline: false
+    // })),
+    // on(BlogActions.offline, (state, action) => ({
+    //     ...state, offline: true, online: false
+    // })),
+    on(BlogActions.getBlogs, (state) => ({
         ...state, isLoading: true
     })), on(BlogActions.getBlogsSuccess, (state, action) => ({
         ...state, isLoading: false, blogs: action.blogs

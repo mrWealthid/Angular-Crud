@@ -2,7 +2,7 @@ import {Injectable} from "@angular/core";
 import {Actions, createEffect, ofType} from "@ngrx/effects";
 import * as BlogActions from "./actions";
 import {exhaustMap, map, mergeMap, of} from "rxjs";
-import {BlogService} from "../blog.service";
+import {BlogService} from "../../blog.service";
 import {catchError} from "rxjs/operators";
 
 @Injectable()
@@ -49,7 +49,18 @@ export class BlogsEffect {
                 }))));
             }))
     );
-
+    // offline$ = createEffect(() =>
+    //     fromEvent(window, 'offline').pipe(
+    //         map(event =>
+    //             BlogActions.offline()
+    //         ),
+    //     ), {dispatch: true}
+    // );
+    // online$ = createEffect(() =>
+    //     fromEvent(window, 'online').pipe(
+    //         map(event => BlogActions.online()),
+    //     ), {dispatch: true}
+    // );
     constructor(private actions$: Actions, private blogService: BlogService) {
     }
 }

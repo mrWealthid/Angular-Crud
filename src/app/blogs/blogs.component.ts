@@ -4,11 +4,10 @@ import {BlogService} from "../core/blog.service";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {ActivatedRoute} from "@angular/router";
 import {select, Store} from "@ngrx/store";
-import * as BlogsAction from "../core/store/actions";
+import * as BlogsAction from "../core/store/Blogs/actions";
 import {Observable} from "rxjs";
-import {blogsSelector, errorSelector, isLoadingSelector} from "../core/store/selectors";
+import {blogsSelector, errorSelector, isLoadingSelector} from "../core/store/Blogs/selectors";
 import {AppStateInterface} from "../types/appState-interface";
-import {DateFormControl} from "../date-form-control";
 
 @Component({
     selector: 'app-blogs',
@@ -37,7 +36,7 @@ export class BlogsComponent implements OnInit {
         this.store.dispatch(BlogsAction.getBlogs());
         this.blogs = this.activatedRoute.snapshot.data['resolvedBlogs'];
         // this.blogService.getBlogs().subscribe(data => this.blogs = data);
-        this.title = new DateFormControl("", Validators.required);
+        this.title = new FormControl("", Validators.required);
         this.content = new FormControl<any>('', Validators.required);
         this.form = new FormGroup<any>({
             title: this.title,

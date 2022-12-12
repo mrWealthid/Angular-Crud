@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpContext} from "@angular/common/http";
-import {Observable} from "rxjs";
+import {Observable, of} from "rxjs";
 import {tap} from 'rxjs/operators';
 import {IBlog} from "./blog";
 import {BEARER_TOKEN, CONTENT_TYPE} from "./add-header";
@@ -42,6 +42,14 @@ export class BlogService {
 
     addComment(newComment: any): Observable<any> {
         return this.http.post<any>(' http://localhost:3000/comments', newComment);
+    }
+
+    navigator(): Observable<Boolean> {
+        return of(navigator.onLine);
+    }
+
+    navigators(val: any): any {
+        console.log(val);
     }
 
     //Mastering Rxjs

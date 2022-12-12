@@ -4,4 +4,6 @@ export interface BlogsState {
     isLoading: boolean;
     blogs: IBlog[];
     error: string | null;
+    // online: Boolean,
+    // offline: Boolean
 }

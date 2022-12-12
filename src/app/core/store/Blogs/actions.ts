@@ -1,5 +1,5 @@
 import {createAction, props} from "@ngrx/store";
-import {IBlog} from "../blog";
+import {IBlog} from "../../blog";
 
 export const getBlogs = createAction('[Blogs] Get Blogs');
 export const getBlogsSuccess = createAction('[Blogs] Get BlogsSuccess', props<{ blogs: IBlog[] }>());
@@ -13,3 +13,5 @@ export const updateBlogsFailure = createAction('[Blogs] Update BlogsFailure', pr
 export const deleteBlogs = createAction('[Blogs] Delete Blogs', props<{ id: number }>());
 export const deleteBlogsSuccess = createAction('[Blogs] Delete BlogsSuccess', props<{ id: number }>());
 export const deleteBlogsFailure = createAction('[Blogs] Delete BlogsFailure', props<{ error: string }>());
+// export const online = createAction('[Blogs] Online');
+// export const offline = createAction('[Blogs] Offline');

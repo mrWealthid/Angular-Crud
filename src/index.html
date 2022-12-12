@@ -1,13 +1,35 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <title>MasterHttp</title>
-  <base href="/">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <meta charset="utf-8">
+    <title>MasterHttp</title>
+    <base href="/">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <link href="favicon.ico" rel="icon" type="image/x-icon">
 </head>
 <body>
-  <app-root></app-root>
+<div class=" text-white p-1" id="status"></div>
+<app-root></app-root>
+<script>
+    window.addEventListener("online", updateStatus);
+    window.addEventListener("offline", updateStatus);
+
+    function updateStatus() {
+        const status = document.getElementById("status");
+        status.classList.remove('bg-green-400', 'bg-black', "hidden");
+        if (navigator.onLine) {
+            status.classList.add("bg-green-400");
+            status.textContent = "You are back online!";
+            setTimeout(() => {
+                status.classList.add("hidden");
+            }, 3000);
+        } else {
+            status.classList.add("bg-black");
+            status.textContent = "You  are offline!";
+        }
+    }
+
+    updateStatus();
+</script>
 </body>
 </html>
