@@ -1,7 +1,7 @@
-import {DateFormat} from './date-form-control';
+import {DateFormControl} from './date-form-control';
 
 describe('DateFormat', () => {
-  it('should create an instance', () => {
-    expect(new DateFormat()).toBeTruthy();
-  });
+    it('should create an instance', () => {
+        expect(new DateFormControl()).toBeTruthy();
+    });
 });

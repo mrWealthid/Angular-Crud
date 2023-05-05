@@ -25,6 +25,7 @@ export class BlogsComponent implements OnInit {
     isLoadings$: Observable<boolean>;
     blogs$: Observable<IBlog[]>;
     error$: Observable<string | null>;
+    private gender: FormControl<any>;
 
     constructor(private blogService: BlogService, private activatedRoute: ActivatedRoute, private store: Store<AppStateInterface>) {
         this.isLoadings$ = this.store.pipe(select(isLoadingSelector));
@@ -38,9 +39,11 @@ export class BlogsComponent implements OnInit {
         // this.blogService.getBlogs().subscribe(data => this.blogs = data);
         this.title = new FormControl("", Validators.required);
         this.content = new FormControl<any>('', Validators.required);
+        this.gender = new FormControl<any>(['male']);
         this.form = new FormGroup<any>({
             title: this.title,
-            content: this.content
+            content: this.content,
+            gender: this.gender
         });
     }
 

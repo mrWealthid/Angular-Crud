@@ -20,6 +20,20 @@
                           cols="30" formControlName="content"
                           id="content" rows="10"></textarea>
             </section>
+            <section class="flex flex-col gap-2">
+                <div>
+                    <input class="custom-control-input" formControlName="gender" id="male" name="gender" type="radio"
+                           value="male"
+                    >
+                    <label class="custom-control-label" for="male">Male</label>
+                </div>
+                <div>
+                    <input class="custom-control-input" formControlName="gender" id="female" name="gender"
+                           type="radio"
+                           value="female">
+                    <label class="custom-control-label" for="female">Female</label>
+                </div>
+            </section>
             <div class="w-full">
                 <button [disabled]="form.invalid"
                         class="btn-primary w-full text-white p-2 rounded">{{edit ? "Update" : "Save"}}</button>
